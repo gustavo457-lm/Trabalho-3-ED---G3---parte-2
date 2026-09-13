@@ -24,11 +24,45 @@ class fila():
             self.head.prox = novo
             self.head = novo
 
-    def listar(self):
+    def listar(self, outra):
         aux = self.tail
-        while aux!=None:
-            print(f"{aux.nome}->", end=' ')
-            aux = aux.prox
+        auxOutra = outra.tail
+#imprime as pessoas da fila, respeitando a ordem do 2Sem1Com utilizando do match e o while
+        match contador:
+            case 0:
+                if aux is not None:
+                    print(f"<- {aux.nome}", end=' ')
+                    aux = aux.prox
+                if aux is not None:
+                    print(f"<- {aux.nome}", end=' ')
+                    aux = aux.prox
+                if auxOutra is not None:
+                    print(f"<- {auxOutra.nome}", end=' ')
+                    auxOutra = auxOutra.prox
+
+            case 1:
+                if aux is not None:
+                    print(f"<- {aux.nome}", end=' ')
+                    aux = aux.prox
+                if auxOutra is not None:
+                    print(f"<- {auxOutra.nome}", end=' ')
+                    auxOutra = auxOutra.prox
+
+            case 2:
+                if auxOutra is not None:
+                    print(f"<- {auxOutra.nome}", end=' ')
+                    auxOutra = auxOutra.prox
+
+        while aux is not None or auxOutra is not None:
+            if aux is not None:
+                print(f"<- {aux.nome}", end=' ')
+                aux = aux.prox
+            if aux is not None:
+                print(f"<- {aux.nome}", end=' ')
+                aux = aux.prox
+            if auxOutra is not None:
+                print(f"<- {auxOutra.nome}", end=' ')
+                auxOutra = auxOutra.prox
 
 
     def atender(self):
@@ -57,29 +91,30 @@ for pessoa in pessoas:
             filaPrioridade.adicionar(pessoa)
         else:
             filaNormal.adicionar(pessoa)
-
+print("="*40)
 print(pessoas)
 
 while True:
     try:
-        print("1. Adicionar pessoa na fila\n2. Atender pessoa\n3. Listar todas as pessoas\n4. Sair\n")
+        print("="*40)
+        print("1. Adicionar pessoa na fila")
+        print("2. Atender pessoa")
+        print("3. Listar todas as pessoas")
+        print("4. Sair")
         print("Escolha: ")
         opcao = int(input())
-
+        print("="*40)
         if opcao == 1:
 
             try:
                 nome = input("Nome: ")
-                print("1. Sem prioridade\n2. Com prioridade\n")
-                opcao = int(input("Escolha: "))
-                if opcao == 1:
-                    filaNormal.adicionar(nome)
-                    print(f"{nome} foi adicionado à fila")
-                elif opcao == 2:
+            
+                if nome[0] == "*":
                     filaPrioridade.adicionar(nome)
                     print(f"{nome} foi adicionado à fila")
                 else:
-                    print("Opcao invalida!")
+                    filaNormal.adicionar(nome)
+                    print(f"{nome} foi adicionado à fila")
             except ValueError:
                 print("Opcao invalida!")
 
@@ -106,10 +141,11 @@ while True:
         elif opcao == 3:
 
             if filaNormal.isEmpty() and filaPrioridade.isEmpty():
+
                 print("Não há ninguém na fila")
             else:
-                filaNormal.listar()
-                filaPrioridade.listar()
+                filaNormal.listar(filaPrioridade)
+        
                 print("")
 
         elif opcao == 4:
@@ -130,6 +166,5 @@ try:
     print(f"Porcentagem de atendimentos com prioridade: {quant_com_prioridade / quant_atendidos * 100: .1f} %")
 except ZeroDivisionError:
     print("Não houve atendimentos!")
-
 
 
