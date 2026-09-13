@@ -27,42 +27,44 @@ class fila():
     def listar(self, outra):
         aux = self.tail
         auxOutra = outra.tail
+        print("Início -> ", end=' ')
 #imprime as pessoas da fila, respeitando a ordem do 2Sem1Com utilizando do match e o while
         match contador:
             case 0:
                 if aux is not None:
-                    print(f"<- {aux.nome}", end=' ')
+                    print(f"{aux.nome} ->", end=' ')
                     aux = aux.prox
                 if aux is not None:
-                    print(f"<- {aux.nome}", end=' ')
+                    print(f"{aux.nome} ->", end=' ')
                     aux = aux.prox
                 if auxOutra is not None:
-                    print(f"<- {auxOutra.nome}", end=' ')
+                    print(f"{auxOutra.nome} ->", end=' ')
                     auxOutra = auxOutra.prox
 
             case 1:
                 if aux is not None:
-                    print(f"<- {aux.nome}", end=' ')
+                    print(f"{aux.nome} ->", end=' ')
                     aux = aux.prox
                 if auxOutra is not None:
-                    print(f"<- {auxOutra.nome}", end=' ')
+                    print(f"{auxOutra.nome} ->", end=' ')
                     auxOutra = auxOutra.prox
 
             case 2:
                 if auxOutra is not None:
-                    print(f"<- {auxOutra.nome}", end=' ')
+                    print(f"{auxOutra.nome} ->", end=' ')
                     auxOutra = auxOutra.prox
 
         while aux is not None or auxOutra is not None:
             if aux is not None:
-                print(f"<- {aux.nome}", end=' ')
+                print(f"{aux.nome} ->", end=' ')
                 aux = aux.prox
             if aux is not None:
-                print(f"<- {aux.nome}", end=' ')
+                print(f"{aux.nome} ->", end=' ')
                 aux = aux.prox
             if auxOutra is not None:
-                print(f"<- {auxOutra.nome}", end=' ')
+                print(f"{auxOutra.nome} ->", end=' ')
                 auxOutra = auxOutra.prox
+        print("Fim", end=' ')
 
 
     def atender(self):
