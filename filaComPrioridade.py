@@ -1,3 +1,5 @@
+import re
+
 class Node:
     def __init__(self, item):
         self.nome = item
@@ -44,6 +46,19 @@ contador = 0
 #Contagem de pessoas atendidas
 quant_atendidos = 0
 quant_com_prioridade = 0
+
+
+listaFila = input("Digite a fila: ")
+listaFila = listaFila.lower()
+pessoas = re.split(r'[.,;:!? \s]', listaFila)
+for pessoa in pessoas:
+    if pessoa != "":
+        if pessoa[0] == '*':
+            filaPrioridade.adicionar(pessoa)
+        else:
+            filaNormal.adicionar(pessoa)
+
+print(pessoas)
 
 while True:
     try:
@@ -110,8 +125,11 @@ while True:
     except ValueError:
         print("Opcao invalida!")
 
-
-print(f"Quantidade de atendimentos: {quant_atendidos}\nQuantidade de atendimentos com prioridade: {quant_com_prioridade}\nPorcentagem de atendimentos com prioridade: {quant_com_prioridade/quant_atendidos * 100:.f1}%")
+print(f"Quantidade de atendimentos: {quant_atendidos}\nQuantidade de atendimentos com prioridade: {quant_com_prioridade}")
+try:
+    print(f"Porcentagem de atendimentos com prioridade: {quant_com_prioridade / quant_atendidos * 100: .1f} %")
+except ZeroDivisionError:
+    print("Não houve atendimentos!")
 
 
 
