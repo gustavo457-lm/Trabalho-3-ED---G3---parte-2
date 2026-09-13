@@ -27,7 +27,7 @@ class fila():
     def listar(self, outra):
         aux = self.tail
         auxOutra = outra.tail
-        print("Início -> ", end=' ')
+        print("Início ->", end=' ')
 #imprime as pessoas da fila, respeitando a ordem do 2Sem1Com utilizando do match e o while
         match contador:
             case 0:
@@ -83,7 +83,7 @@ contador = 0
 quant_atendidos = 0
 quant_com_prioridade = 0
 
-
+#Separa a entrada de dados de uma linha e insere os nomes nas fila 
 listaFila = input("Digite a fila: ")
 listaFila = listaFila.lower()
 pessoas = re.split(r'[.,;:!? \s]', listaFila)
@@ -94,7 +94,6 @@ for pessoa in pessoas:
         else:
             filaNormal.adicionar(pessoa)
 print("="*40)
-print(pessoas)
 
 while True:
     try:
@@ -164,6 +163,7 @@ while True:
         print("Opcao invalida!")
 
 print(f"Quantidade de atendimentos: {quant_atendidos}\nQuantidade de atendimentos com prioridade: {quant_com_prioridade}")
+
 try:
     print(f"Porcentagem de atendimentos com prioridade: {quant_com_prioridade / quant_atendidos * 100: .1f} %")
 except ZeroDivisionError:
