@@ -1,5 +1,5 @@
 import re
-from FilaComPrioridade import fila
+from filaComPrioridade import fila
 
 #Separa uma parte do programa de outra para mante-lo organizado visualmente
 def separaTexto():
